@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Elysium Invitaciones//XV Jaira//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:XV Jaira Elena Molina Sánchez
+BEGIN:VEVENT
+UID:xv-jaira-misa-20261223@elysium
+DTSTAMP:20261006T000000Z
+DTSTART:20261223T230000Z
+DTEND:20261224T000000Z
+SUMMARY:Ceremonia religiosa · XV Años de Jaira Elena
+LOCATION:Calle Lic. Dante Delgado Ranauro\, Misantla\, Ver.
+DESCRIPTION:Ceremonia religiosa de los XV años de Jaira Elena Molina Sánchez.\nhttps://boda-jaira-elena-molina-sanchez.vercel.app
+URL:https://boda-jaira-elena-molina-sanchez.vercel.app
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Mañana: XV años de Jaira
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:xv-jaira-recepcion-20261223@elysium
+DTSTAMP:20261006T000000Z
+DTSTART:20261224T000000Z
+DTEND:20261224T060000Z
+SUMMARY:Recepción · XV Años de Jaira Elena
+LOCATION:Salón Camino Real\, Misantla\, Ver.
+DESCRIPTION:Recepción 6:00 p.m.\nhttps://boda-jaira-elena-molina-sanchez.vercel.app
+URL:https://boda-jaira-elena-molina-sanchez.vercel.app
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Recepción de los XV de Jaira en 2 horas
+END:VALARM
+END:VEVENT
+END:VCALENDAR

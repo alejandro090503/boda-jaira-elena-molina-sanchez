@@ -1,0 +1,9 @@
+.vercel
+.claude
+.DS_Store
+_src/orig/
+_src/*.jpg
+_src/
+
+.vercel
+.env*
