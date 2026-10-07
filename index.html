@@ -1155,6 +1155,21 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
 .env-tap{display:inline-flex!important;align-items:center;justify-content:center}
 .env-tap::before{position:static!important;inset:auto!important;border:none!important;border-radius:0!important;flex-shrink:0;margin-right:10px;vertical-align:middle}
 .env-tap::after{content:'';position:absolute;inset:0;border-radius:50px;border:1px solid rgba(67,97,211,.55);animation:envpulse 2s ease-out infinite;pointer-events:none}
+/* levitación y ondeo: propiedades translate/rotate sueltas para no chocar con el transform de GSAP */
+@keyframes levita{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.cd-unit{animation:levita 3.6s ease-in-out infinite}
+.cd-unit:nth-child(3){animation-delay:-.9s}.cd-unit:nth-child(5){animation-delay:-1.8s}.cd-unit:nth-child(7){animation-delay:-2.7s}
+.dc-card{animation:levita 4.2s ease-in-out infinite;box-shadow:0 16px 30px rgba(0,0,0,.35)}
+.dc-card:nth-child(2){animation-delay:-2.1s}
+.sec:has(.fam-card){perspective:900px}
+@keyframes ondea{0%,100%{rotate:1 0 0 0deg;translate:0 0}25%{rotate:.3 1 0 2.4deg;translate:0 -3px}50%{rotate:1 .2 0 1.8deg;translate:0 -5px}75%{rotate:.3 -1 0 2.4deg;translate:0 -3px}}
+.fam-card,.fam-padrinos{animation:ondea 7s ease-in-out infinite;transform-style:preserve-3d;overflow:hidden}
+.fam-card:nth-of-type(2),.fam-padrinos{animation-delay:-3.5s}
+.fam-card::after,.fam-padrinos::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,rgba(220,227,244,.13) 48%,rgba(220,227,244,.04) 56%,transparent 70%);
+  background-size:250% 100%;animation:ondeaLuz 7s ease-in-out infinite}
+@keyframes ondeaLuz{0%{background-position:120% 0}60%,100%{background-position:-60% 0}}
+@media(prefers-reduced-motion:reduce){.cd-unit,.dc-card,.fam-card,.fam-padrinos,.fam-card::after,.fam-padrinos::after{animation:none}}
 /* invitación solo en español */
 #lang-screen,#lang-toggle{display:none!important}
 </style>
