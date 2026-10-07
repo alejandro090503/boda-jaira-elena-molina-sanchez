@@ -1151,6 +1151,10 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
 .hero-groom{font-size:clamp(42px,11.6vw,66px)!important;white-space:nowrap}
 #albumBtn{display:none!important}
 .rsvp-note{color:#DCE3F4!important}
+/* "Toca para abrir": mano en línea con el texto, el pulso va en ::after */
+.env-tap{display:inline-flex!important;align-items:center;justify-content:center}
+.env-tap::before{position:static!important;inset:auto!important;border:none!important;border-radius:0!important;flex-shrink:0;margin-right:10px;vertical-align:middle}
+.env-tap::after{content:'';position:absolute;inset:0;border-radius:50px;border:1px solid rgba(67,97,211,.55);animation:envpulse 2s ease-out infinite;pointer-events:none}
 /* invitación solo en español */
 #lang-screen,#lang-toggle{display:none!important}
 </style>
