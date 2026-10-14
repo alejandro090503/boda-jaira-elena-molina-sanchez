@@ -1171,6 +1171,35 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
 @keyframes ondeaLuz{0%{background-position:120% 0}60%,100%{background-position:-60% 0}}
 @media(prefers-reduced-motion:reduce){.cd-unit,.dc-card,.fam-card,.fam-padrinos,.fam-card::after,.fam-padrinos::after{animation:none}}
 .clock-btn.bf-btn{position:fixed!important;z-index:9500!important}
+/* números legibles (el 10 parecía "io") */
+body,.rsvp-text strong,.rsvp-deadline-chip strong{font-variant-numeric:lining-nums}
+.rsvp-text strong,.rsvp-deadline-chip strong{font-family:'Cormorant Garamond',Georgia,serif;font-feature-settings:"lnum" 1}
+/* hero simétrico: los dos nombres al mismo tamaño */
+.hero-bride,.hero-groom{font-size:clamp(66px,20vw,96px)!important}
+/* oración */
+.oracion .oracion-p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.75;color:var(--text);max-width:320px;margin:18px auto 0}
+.oracion .oracion-amen{font-family:'Great Vibes',cursive;font-size:34px;color:#DCE3F4;margin-top:18px}
+.inv-fecha{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:20px;color:var(--text);line-height:1.8;margin-top:22px}
+.fam-frase{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:19px;line-height:1.7;color:#DCE3F4;max-width:310px;margin:10px auto 6px}
+.cd-baby-cap{max-width:300px;margin-left:auto;margin-right:auto}
+/* retrato con foto alterna */
+.portrait-alt{position:absolute!important;left:0;top:0;opacity:0;transition:opacity 1.8s ease-in-out}
+.portrait-alt.is-on{opacity:1}
+/* lluvia de sobres + rsvp */
+.sobres-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;line-height:1.7;color:#DCE3F4;max-width:310px;margin:18px auto 0}
+.rsvp-puntual{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:17px;color:#DCE3F4;margin:-10px auto 22px;max-width:300px;line-height:1.5}
+/* hospedaje (boda-roxana-y-omar, paleta azul rey) */
+.hosp-intro{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--text);max-width:320px;margin:14px auto 4px;line-height:1.6}
+.hosp-carousel{position:relative;max-width:380px;margin:26px auto 0}
+.hosp-slide{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 30px}
+.hosp-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid rgba(201,211,236,.45);box-shadow:0 12px 34px rgba(0,0,0,.4);margin-bottom:22px}
+.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hosp-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:23px;color:#F4F7FF;margin-bottom:6px}
+.hosp-city{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#C9D3EC;margin-bottom:16px}
+.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-hosp{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:1.5px solid #C9D3EC;border-radius:50px;color:#F4F7FF;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px;text-decoration:none;background:rgba(39,71,201,.25);transition:background .25s}
+.btn-hosp:hover{background:#2747C9}
+.btn-hosp svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 /* invitación solo en español */
 #lang-screen,#lang-toggle{display:none!important}
 </style>
@@ -1243,7 +1272,7 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
       <div class="hero-quince rv"><span class="hq-line"></span><span class="hq-txt" data-en="My&amp;nbsp;<span class=&quot;hq-xv&quot;>XV</span>&amp;nbsp;Birthday">Mis&nbsp;<span class="hq-xv">XV</span>&nbsp;Años</span><span class="hq-line r"></span></div>
       <span class="hero-bride rv">Jaira</span>
       <span class="hero-amp rv">·</span>
-      <span class="hero-groom rv">Molina Sánchez</span>
+      <span class="hero-groom rv">Elena</span>
     </div>
     <div class="scroll-hint" id="scrollHint">
       <div class="scroll-hint-line"></div>
@@ -1252,22 +1281,29 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
     </div>
   </section>
 
+  <!-- ORACIÓN -->
+  <section class="sec rv oracion" style="text-align:center;overflow:hidden">
+    <div class="sec-bg" style="background-image:url('textura-2.jpg');opacity:.45"></div>
+    <span class="eyebrow stagger-child">Oración</span>
+    <h2 class="heading-sm stagger-child">Virgen de los Dolores</h2>
+    <div class="orn stagger-child"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <p class="oracion-p stagger-child">Santísima Virgen de los Dolores, Madre amorosa y protectora, hoy me acerco a ti con un corazón lleno de fe y gratitud al celebrar mis quince años.</p>
+    <p class="oracion-p stagger-child">Te entrego mi vida, mis sueños, mis ilusiones y el camino que hoy comienzo a recorrer. Tómame de tu mano maternal, cúbreme con tu manto y acompáñame en cada paso de mi juventud.</p>
+    <p class="oracion-p stagger-child">Virgencita de los Dolores, enséñame a ser fuerte ante las dificultades, humilde en mis triunfos y generosa con quienes me rodean. Que tu amor de Madre me guíe siempre por el camino de tu Hijo Jesús.</p>
+    <p class="oracion-p stagger-child">Bendice a mis padres, a mi familia y a todas las personas que hoy comparten conmigo esta alegría. Intercede por mí ante Dios nuestro Señor, para que nunca me falte la fe, la esperanza ni el amor.</p>
+    <p class="oracion-p stagger-child">Virgen Santísima de los Dolores, acompáñame hoy, mañana y siempre, y guíame bajo tu manto maternal.</p>
+    <p class="oracion-amen stagger-child">Amén.</p>
+  </section>
+
   <!-- INVITACIÓN -->
   <section class="sec rv" style="text-align:center;overflow:hidden">
     <div class="sec-bg" style="background-image:url('fondo-gracia.jpg');opacity:.52"></div>
-    <span class="eyebrow stagger-child" data-en="By the grace of God">Con la gracia de Dios</span>
-    <div class="orn stagger-child"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <h1 class="heading stagger-child">Jaira Elena<br>Molina Sánchez</h1>
-    <p class="sub stagger-child" style="margin-top:10px;font-weight:700;color:var(--gold);font-size:23px;opacity:1" data-en="I invite you to<br>my XV birthday">te invito a<br>mis XV años</p>
+    <div class="orn stagger-child"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <span class="eyebrow stagger-child" style="margin-top:6px">Con la gracia de Dios</span>
+    <p class="invite-verse stagger-child">Hay momentos en la vida que se vuelven inolvidables y hoy quiero compartir uno de los más especiales contigo.<br>Con mucha alegría en mi corazón te invito a celebrar mis XV años.</p>
     <div class="orn bot stagger-child"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <p class="stagger-child" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:20px;color:var(--text);line-height:1.8;margin-top:24px;opacity:.95" data-en="
-      Wednesday, December 23, 2026<br>
-      Misantla, Veracruz
-    ">
-      Miércoles, 23 de Diciembre de 2026<br>
-      Misantla, Veracruz
-    </p>
-    <p class="invite-verse stagger-child" data-en="Today a dream comes true.<br>With the blessing of God and my parents,<br>I invite you to celebrate this very special day.">Hoy un sueño se hace realidad.<br>Con la bendición de Dios y mis padres,<br>te invito a celebrar este día tan especial.</p>
+    <p class="stagger-child inv-fecha">Miércoles, 23 de Diciembre de 2026<br>Misantla, Veracruz</p>
   </section>
 
   <!-- LA FESTEJADA · RETRATO -->
@@ -1300,7 +1336,6 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
   @media(prefers-reduced-motion:reduce){.portrait-ring,.portrait-ring2,.portrait-shine::after{animation:none!important}}
   </style>
   <section class="portrait-section rv" id="retrato">
-    <span class="eyebrow stagger-child" style="margin-bottom:6px" data-en="The Birthday Girl">La Festejada</span>
     <svg class="portrait-tiara stagger-child" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M8 33 L15 13 L27 25 L40 7 L53 25 L65 13 L72 33 Z" fill="rgba(216,219,234,.16)" stroke="#4361D3" stroke-width="1.5" stroke-linejoin="round"/>
       <line x1="7" y1="33" x2="73" y2="33" stroke="#4361D3" stroke-width="1.7" stroke-linecap="round"/>
@@ -1315,11 +1350,10 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
       <svg class="portrait-corner tr" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 34 C2 18 18 2 34 2" stroke="#4361D3" stroke-width="1.2" fill="none" opacity=".75"/><circle cx="4" cy="28" r="2.5" fill="#B7BED9" opacity=".55"/><circle cx="10" cy="16" r="1.8" fill="#D9DDEB" opacity=".75"/><circle cx="22" cy="6" r="2" fill="#4361D3" opacity=".55"/></svg>
       <svg class="portrait-corner bl" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 34 C2 18 18 2 34 2" stroke="#4361D3" stroke-width="1.2" fill="none" opacity=".75"/><circle cx="4" cy="28" r="2.5" fill="#B7BED9" opacity=".55"/><circle cx="10" cy="16" r="1.8" fill="#D9DDEB" opacity=".75"/><circle cx="22" cy="6" r="2" fill="#4361D3" opacity=".55"/></svg>
       <svg class="portrait-corner br" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 34 C2 18 18 2 34 2" stroke="#4361D3" stroke-width="1.2" fill="none" opacity=".75"/><circle cx="4" cy="28" r="2.5" fill="#B7BED9" opacity=".55"/><circle cx="10" cy="16" r="1.8" fill="#D9DDEB" opacity=".75"/><circle cx="22" cy="6" r="2" fill="#4361D3" opacity=".55"/></svg>
-      <img class="portrait-img" src="retrato.jpg" alt="Retrato de Jaira Elena Molina Sánchez en sus XV años" data-en-alt="Portrait of Jaira Elena Molina Sánchez on her quinceañera" loading="lazy">
+      <img class="portrait-img" src="retrato.jpg" alt="Retrato de Jaira Elena Molina Sánchez en sus XV años"><img class="portrait-img portrait-alt" src="retrato-bebe.jpg" alt="Jaira Elena de bebé" aria-hidden="true">
       <div class="portrait-shine"></div>
     </div>
     <div class="portrait-name stagger-child">Jaira Elena</div>
-    <div class="portrait-tag stagger-child" data-en="XV Years · 2026">XV Años · 2026</div>
     <div class="portrait-divider stagger-child"></div>
   </section>
 
@@ -1338,9 +1372,9 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
         <div class="cd-baby-ring"></div>
         <img class="cd-baby-img" src="bebe.jpg" alt="Jaira con su pastel de XV años" data-en-alt="Jaira with her quinceañera cake">
       </div>
-      <p class="cd-baby-cap" data-en="Fifteen years ago this dream began…<br>and today it is almost real">Hace quince años empezó este sueño…<br>y hoy ya casi es realidad</p>
+      <p class="cd-baby-cap">Hace 15 años nació una hermosa niña, enviada por Dios para ser cuidada y formada como el más grande tesoro de mamá y papá.</p>
     </div>
-    <p class="alice-quote rv" data-en="«Like a butterfly, every stage has its time…<br>and mine has arrived»">«Como la mariposa, cada etapa tiene su tiempo…<br>y la mía ha llegado»</p>
+    <p class="alice-quote rv">Hay momentos en la vida que imaginamos, soñamos y esperamos; uno de esos momentos ha llegado y quiero compartirlo contigo.</p>
     <span class="eyebrow" style="font-size:22px;color:#AEB6D5" data-en="Counting down">Faltan</span>
     <div class="cd-wrap">
     <div class="cd-ring"></div>
@@ -1374,8 +1408,8 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
   
   <section class="sec rv" style="text-align:center;overflow:hidden">
     <div class="sec-bg" style="background-image:url('textura-1.jpg');opacity:.5"></div>
-    <span class="eyebrow" data-en="With the blessing of">Con la bendición de</span>
-    <h2 class="heading-sm" data-en="My Family">Mi Familia</h2>
+    <span class="eyebrow">Mi Familia</span>
+    <p class="fam-frase">Con la bendición de Dios y el amor de mis padres, te invitamos a ser parte de una noche llena de magia e ilusión.</p>
     <div class="fam-rings rv">
       <svg viewBox="0 0 62 26" width="62" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="20" cy="13" r="11" fill="none" stroke="#4361D3" stroke-width="1.3" opacity=".6"/>
@@ -1513,16 +1547,12 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
         </figcaption>
       </figure>
     </div>
-    <p class="dc-reserve rv" data-en="Please <strong>avoid</strong> these colors">Te pedimos <strong>evitar</strong> estos colores</p>
+    <p class="dc-reserve rv">Te pedimos <strong>evitar</strong> este color,<br>está reservado para la quinceañera</p>
     <div class="dc-crown-row is-evitar rv" style="margin-bottom:6px">
       <div class="dc-swatch">
-        <div class="dc-alice-wrap"><span class="dc-alice is-reloj" style="background-color:#592dd2" title="Morado"></span></div>
-        <span class="dc-swatch-name" data-en="Purple">Morado</span>
+        <div class="dc-alice-wrap"><span class="dc-alice is-reloj" style="background-color:#1F3FBF" title="Azul rey"></span></div>
+        <span class="dc-swatch-name">Azul rey</span>
       </div>
-    </div>
-    <div class="no-kids">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="8" y1="8" x2="16" y2="16"/></svg>
-      <span data-en="With much love, we would like to share that this celebration will be for adults only.<br>Thank you from the heart for understanding and joining us on this very special day.">Con mucho cariño, queremos compartir que esta celebración será exclusivamente para adultos.<br>Gracias de corazón por comprender y acompañarnos en este día tan especial.</span>
     </div>
   </section>
 
@@ -1570,6 +1600,32 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
     </a>
   </section>
 
+  <!-- HOSPEDAJE (diseño boda-roxana-y-omar) -->
+  <section id="hospedaje" class="sec rv has-aurora" style="text-align:center">
+    <div class="aurora" aria-hidden="true"><i class="au-base"></i><i class="au-b1"></i><i class="au-b2"></i><i class="au-b3"></i><i class="au-b4"></i></div>
+    <span class="eyebrow">Para tu estancia</span>
+    <h2 class="heading-sm">Hospedaje Recomendado</h2>
+    <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <p class="hosp-intro">Si vienes de fuera, te recomendamos esta opción de hospedaje en Misantla.</p>
+    <div class="hosp-carousel">
+      <div class="hosp-slide">
+        <div class="hosp-photo"><img src="hotel-don-pablo.jpg" alt="Hotel Don Pablo, Misantla" loading="lazy"></div>
+        <div class="hosp-name">Hotel Don Pablo</div>
+        <div class="hosp-city">Misantla, Veracruz</div>
+        <div class="hosp-btns">
+          <a class="btn-hosp" href="https://www.facebook.com/HotelDonPabloMisantla" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M7 7V5a5 5 0 0110 0v2"/></svg>
+            Reservar
+          </a>
+          <a class="btn-hosp" href="https://maps.app.goo.gl/c63xxv9FAbNsVMYk7" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- NUESTRA HISTORIA -->
   <section id="galeria" class="has-aurora">
     <div class="aurora" aria-hidden="true"><i class="au-base"></i><i class="au-b1"></i><i class="au-b2"></i><i class="au-b3"></i><i class="au-b4"></i></div>
@@ -1578,35 +1634,35 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <p class="gal-quote rv" data-en="Every photo, a moment of this dream come true.">Cada foto, un instante de este sueño hecho realidad.</p>
     <div class="gal-scroll rv" id="galScroll">
-      <button class="gal-item" type="button" data-full="full-18.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 1 de 29"><img data-src="foto18.jpg" alt="Jaira Elena en su sesión de XV años, foto 18" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-1.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 2 de 29"><img data-src="foto1.jpg" alt="Jaira Elena en su sesión de XV años, foto 1" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-4.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 1 de 29"><img data-src="foto4.jpg" alt="Jaira Elena en su sesión de XV años, foto 4" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-5.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 2 de 29"><img data-src="foto5.jpg" alt="Jaira Elena en su sesión de XV años, foto 5" decoding="async"></button>
       <button class="gal-item" type="button" data-full="full-2.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 3 de 29"><img data-src="foto2.jpg" alt="Jaira Elena en su sesión de XV años, foto 2" decoding="async"></button>
       <button class="gal-item" type="button" data-full="full-3.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 4 de 29"><img data-src="foto3.jpg" alt="Jaira Elena en su sesión de XV años, foto 3" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-4.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 5 de 29"><img data-src="foto4.jpg" alt="Jaira Elena en su sesión de XV años, foto 4" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-5.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 6 de 29"><img data-src="foto5.jpg" alt="Jaira Elena en su sesión de XV años, foto 5" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-6.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 7 de 29"><img data-src="foto6.jpg" alt="Jaira Elena en su sesión de XV años, foto 6" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-7.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 8 de 29"><img data-src="foto7.jpg" alt="Jaira Elena en su sesión de XV años, foto 7" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-8.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 9 de 29"><img data-src="foto8.jpg" alt="Jaira Elena en su sesión de XV años, foto 8" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-9.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 10 de 29"><img data-src="foto9.jpg" alt="Jaira Elena en su sesión de XV años, foto 9" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-10.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 11 de 29"><img data-src="foto10.jpg" alt="Jaira Elena en su sesión de XV años, foto 10" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-11.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 12 de 29"><img data-src="foto11.jpg" alt="Jaira Elena en su sesión de XV años, foto 11" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-12.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 13 de 29"><img data-src="foto12.jpg" alt="Jaira Elena en su sesión de XV años, foto 12" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-13.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 14 de 29"><img data-src="foto13.jpg" alt="Jaira Elena en su sesión de XV años, foto 13" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-14.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 15 de 29"><img data-src="foto14.jpg" alt="Jaira Elena en su sesión de XV años, foto 14" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-15.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 16 de 29"><img data-src="foto15.jpg" alt="Jaira Elena en su sesión de XV años, foto 15" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-16.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 17 de 29"><img data-src="foto16.jpg" alt="Jaira Elena en su sesión de XV años, foto 16" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-6.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 5 de 29"><img data-src="foto6.jpg" alt="Jaira Elena en su sesión de XV años, foto 6" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-7.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 6 de 29"><img data-src="foto7.jpg" alt="Jaira Elena en su sesión de XV años, foto 7" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-10.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 7 de 29"><img data-src="foto10.jpg" alt="Jaira Elena en su sesión de XV años, foto 10" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-14.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 8 de 29"><img data-src="foto14.jpg" alt="Jaira Elena en su sesión de XV años, foto 14" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-11.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 9 de 29"><img data-src="foto11.jpg" alt="Jaira Elena en su sesión de XV años, foto 11" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-12.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 10 de 29"><img data-src="foto12.jpg" alt="Jaira Elena en su sesión de XV años, foto 12" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-15.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 11 de 29"><img data-src="foto15.jpg" alt="Jaira Elena en su sesión de XV años, foto 15" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-13.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 12 de 29"><img data-src="foto13.jpg" alt="Jaira Elena en su sesión de XV años, foto 13" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-19.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 13 de 29"><img data-src="foto19.jpg" alt="Jaira Elena en su sesión de XV años, foto 19" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-8.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 14 de 29"><img data-src="foto8.jpg" alt="Jaira Elena en su sesión de XV años, foto 8" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-16.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 15 de 29"><img data-src="foto16.jpg" alt="Jaira Elena en su sesión de XV años, foto 16" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-20.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 16 de 29"><img data-src="foto20.jpg" alt="Jaira Elena en su sesión de XV años, foto 20" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-21.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 17 de 29"><img data-src="foto21.jpg" alt="Jaira Elena en su sesión de XV años, foto 21" decoding="async"></button>
       <button class="gal-item" type="button" data-full="full-17.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 18 de 29"><img data-src="foto17.jpg" alt="Jaira Elena en su sesión de XV años, foto 17" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-19.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 19 de 29"><img data-src="foto19.jpg" alt="Jaira Elena en su sesión de XV años, foto 19" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-20.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 20 de 29"><img data-src="foto20.jpg" alt="Jaira Elena en su sesión de XV años, foto 20" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-21.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 21 de 29"><img data-src="foto21.jpg" alt="Jaira Elena en su sesión de XV años, foto 21" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-22.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 22 de 29"><img data-src="foto22.jpg" alt="Jaira Elena en su sesión de XV años, foto 22" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-23.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 23 de 29"><img data-src="foto23.jpg" alt="Jaira Elena en su sesión de XV años, foto 23" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-24.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 24 de 29"><img data-src="foto24.jpg" alt="Jaira Elena en su sesión de XV años, foto 24" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-22.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 19 de 29"><img data-src="foto22.jpg" alt="Jaira Elena en su sesión de XV años, foto 22" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-23.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 20 de 29"><img data-src="foto23.jpg" alt="Jaira Elena en su sesión de XV años, foto 23" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-18.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 21 de 29"><img data-src="foto18.jpg" alt="Jaira Elena en su sesión de XV años, foto 18" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-24.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 22 de 29"><img data-src="foto24.jpg" alt="Jaira Elena en su sesión de XV años, foto 24" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-9.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 23 de 29"><img data-src="foto9.jpg" alt="Jaira Elena en su sesión de XV años, foto 9" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-28.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 24 de 29"><img data-src="foto28.jpg" alt="Jaira Elena en su sesión de XV años, foto 28" decoding="async"></button>
       <button class="gal-item" type="button" data-full="full-25.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 25 de 29"><img data-src="foto25.jpg" alt="Jaira Elena en su sesión de XV años, foto 25" decoding="async"></button>
       <button class="gal-item" type="button" data-full="full-26.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 26 de 29"><img data-src="foto26.jpg" alt="Jaira Elena en su sesión de XV años, foto 26" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-27.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 27 de 29"><img data-src="foto27.jpg" alt="Jaira Elena en su sesión de XV años, foto 27" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-28.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 28 de 29"><img data-src="foto28.jpg" alt="Jaira Elena en su sesión de XV años, foto 28" decoding="async"></button>
-      <button class="gal-item" type="button" data-full="full-29.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 29 de 29"><img data-src="foto29.jpg" alt="Jaira Elena en su sesión de XV años, foto 29" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-29.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 27 de 29"><img data-src="foto29.jpg" alt="Jaira Elena en su sesión de XV años, foto 29" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-27.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 28 de 29"><img data-src="foto27.jpg" alt="Jaira Elena en su sesión de XV años, foto 27" decoding="async"></button>
+      <button class="gal-item" type="button" data-full="full-1.jpg" data-cap="Jaira Elena · XV Años" data-cap-en="Jaira Elena · Quinceañera" aria-label="Ver la foto 29 de 29"><img data-src="foto1.jpg" alt="Jaira Elena en su sesión de XV años, foto 1" decoding="async"></button>
     </div>
     <div class="gal-nav rv">
       <button class="gal-arrow" id="galPrev" type="button" aria-label="Foto anterior" data-en-aria="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
@@ -1624,6 +1680,7 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
       <span class="eyebrow" data-en="Celebrate With Me">Celebra Conmigo</span>
       <h2 class="heading-sm" data-en="Envelope Shower">Lluvia de Sobres</h2>
       <div class="orn" style="margin-top:14px;margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+      <p class="sobres-msg">Tu presencia sería el mejor regalo para mí, pero si deseas hacerme un obsequio, tienes la opción de lluvia de sobres.</p>
 
       <button class="env-interactive" id="envGift" type="button" aria-label="Sobre — toca para abrir" data-en-aria="Envelope — tap to open" aria-expanded="false">
         <div class="env-gift-body" id="envGiftBody">
@@ -1773,6 +1830,7 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
         <span class="eyebrow" data-en="Confirm Your Attendance">Confirma tu Asistencia</span>
         <h2 class="rsvp-title" data-en="Your presence <em>means everything</em>">Tu presencia <em>lo es todo</em></h2>
         <p class="rsvp-text" data-en="Please confirm before <strong>December 10, 2026</strong>. It would make me so happy to know you will be there.">Por favor confírmame tu asistencia antes del <strong>10 de diciembre de 2026</strong>. Me hará muy feliz saber que estarás ahí.</p>
+        <p class="rsvp-puntual">De tu puntualidad depende que mi día sea perfecto.</p>
 
         <div class="rsvp-divider">
           <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
@@ -2708,6 +2766,12 @@ function initMain(){
   }, {passive:true});
   document.getElementById('galPrev').addEventListener('click', function(){ go(cur()-1); });
   document.getElementById('galNext').addEventListener('click', function(){ go(cur()+1); });
+})();
+
+/* ── RETRATO: alterna con la foto de bebé ── */
+(function(){
+  var alt=document.querySelector('.portrait-alt'); if(!alt) return;
+  setInterval(function(){ alt.classList.toggle('is-on'); }, 4500);
 })();
 
 /* ── VISOR DE FOTOS A PANTALLA COMPLETA ── */
