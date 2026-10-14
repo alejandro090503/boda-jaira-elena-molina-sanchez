@@ -1135,7 +1135,12 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
 .bf-btn.is-playing .bf-pause{display:flex}
 @media(prefers-reduced-motion:reduce){.bf-btn .bf-wings,.bf-ring{animation:none}}
 /* QR del álbum con blur hasta el día del evento */
-.qr-img{filter:blur(7px);opacity:.85;user-select:none;pointer-events:none}
+.qr-img{user-select:none;transition:filter .4s,opacity .4s}
+.album-qr.bloqueado .qr-img{filter:blur(7px);opacity:.85}
+.album-qr.bloqueado a{pointer-events:none}
+.album-qr.bloqueado .album-btn{opacity:.45 !important}
+.album-qr:not(.bloqueado) .album-aviso{display:none}
+.album-qr .btn-album{margin-top:4px}
 .qr-outer{overflow:hidden}
 .qr-note{opacity:1!important;font-weight:600;font-size:17px}
 /* fundido suave entre secciones: mismo fondo y capas que se desvanecen en px */
@@ -1149,7 +1154,6 @@ a[x-apple-data-detectors],.gr-acc-c a,.gr-acc-c a:link,.gr-acc-c a:visited{
 .hero-content{padding:0 44px!important;max-width:100%}
 .hero-bride{font-size:clamp(58px,17vw,86px)!important}
 .hero-groom{font-size:clamp(42px,11.6vw,66px)!important;white-space:nowrap}
-#albumBtn{display:none!important}
 .rsvp-note{color:#DCE3F4!important}
 /* "Toca para abrir": mano en línea con el texto, el pulso va en ::after */
 .env-tap{display:inline-flex!important;align-items:center;justify-content:center}
@@ -1741,20 +1745,25 @@ body,.rsvp-text strong,.rsvp-deadline-chip strong{font-variant-numeric:lining-nu
     <span class="eyebrow" style="color:var(--gold-light);opacity:.85" data-en="Share the Moment">Comparte el Momento</span>
     <h2 class="heading-sm" style="color:var(--gold-light)" data-en="Shared Album">Álbum Compartido</h2>
     <div class="orn" style="margin-top:14px;margin-bottom:0"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(67,97,211,.4),transparent)"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(67,97,211,.4),transparent)"></div></div>
-    <p class="gift-msg rv" style="margin-top:18px;max-width:320px" data-en="Scan the code and share your photos and videos from the night — it will be our shared memory of this day.">Escanea el código y comparte tus fotos y videos de la noche — será el recuerdo colectivo de este día.</p>
-    <!-- PENDIENTE: link del álbum real + regenerar el QR -->
-    <div class="qr-premium rv">
-      <div class="qr-outer">
+    <p class="gift-msg rv" style="margin-top:18px;max-width:320px" data-en="Help me keep every moment: upload here the photos you take during the event.">Ayúdame a guardar cada momento: sube aquí las fotos que tomes durante el evento.</p>
+    <!-- Álbum de Elysium: el QR abre /album → panel-invitados.vercel.app/subir/xv-jaira-elena-molina-sanchez -->
+    <div class="qr-premium album-qr rv" data-fecha="2026-12-23">
+      <a class="qr-outer" href="/album" aria-label="Abrir el álbum de fotos">
         <div class="qr-c tl"></div><div class="qr-c tr"></div><div class="qr-c bl"></div><div class="qr-c br"></div>
-        <img class="qr-img" src="qr-album.png" alt="Código QR del álbum compartido de Jaira" data-en-alt="QR code for Jaira's shared album" loading="lazy">
-      </div>
+        <img class="qr-img" src="qr-album.png" alt="Código QR del álbum de fotos" data-en-alt="Photo album QR code">
+      </a>
       <span class="qr-scan-lbl" data-en="Scan to open the album">Escanea para abrir el álbum</span>
-      <span class="qr-note" data-en="The link will be available on the day of the event">El enlace estará disponible el día del evento</span>
+      <a class="btn-album album-btn" href="/album">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v12h12v-4h2v6H4V4zm9 0h7v7h-2V7.4l-7.3 7.3-1.4-1.4L16.6 6H13V4z"/></svg>
+        <span data-en="Upload my photos">Subir mis fotos</span>
+      </a>
+      <span class="qr-note album-aviso" data-en="The photo album opens on the day of the event. Come back here and upload all your photos from the night ✨">El álbum de fotos se habilita el día del evento. Regresa aquí y sube todas tus fotos de la noche ✨</span>
     </div>
-    <a class="btn-album rv" id="albumBtn" hidden href="https://xv-jaira-elena-molina-sanchez.vercel.app/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v12h12v-4h2v6H4V4zm9 0h7v7h-2V7.4l-7.3 7.3-1.4-1.4L16.6 6H13V4z"/></svg>
-      <span data-en="Open the album">Ir al álbum</span>
-    </a>
+    <script>
+      /* Se desbloquea solo el día del evento (la base además rechaza fotos antes de tiempo) */
+      (function(){var box=document.querySelector('.album-qr[data-fecha]');if(!box)return;var p=box.dataset.fecha.split('-');
+        if(new Date()<new Date(+p[0],+p[1]-1,+p[2],0,0,0))box.classList.add('bloqueado');})();
+    </script>
   </section>
 
 
@@ -1783,6 +1792,14 @@ body,.rsvp-text strong,.rsvp-deadline-chip strong{font-variant-numeric:lining-nu
   .rsvp-editar-btn:hover:not(:disabled){background:rgba(67,97,211,.14)}
   .rsvp-editar-btn:disabled{opacity:.45;cursor:default}
   .rsvp-input{min-height:52px}
+  .rsvp-para{margin:4px auto 14px;text-align:center}
+  .rsvp-para-lbl{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:#AEB6D5;margin-bottom:4px}
+  .rsvp-para-nombre{display:inline-block;font-family:'Great Vibes',cursive;font-size:clamp(42px,11.5vw,56px);line-height:1.15;padding:.08em .22em;
+    background:linear-gradient(100deg,#9AA6D6 0%,#D8DBEA 30%,#F4F6FC 46%,#ffffff 50%,#F4F6FC 54%,#D8DBEA 70%,#9AA6D6 100%);background-size:260% 100%;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#E6E9F5;
+    filter:drop-shadow(0 2px 10px rgba(67,97,211,.45));animation:paraSweep 7s linear infinite}
+  @keyframes paraSweep{from{background-position:120% 50%}to{background-position:-120% 50%}}
+  @media (prefers-reduced-motion:reduce){.rsvp-para-nombre{animation:none;background-position:50% 50%}}
   .rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:16px;line-height:1.5;color:var(--gold);margin-top:16px;min-height:20px}
   /* Campos claros: sobre la tarjeta azul oscuro los campos oscuros casi no se veían */
   .rsvp-input{background:#ECEEF5;color:#091131;border:1.5px solid rgba(67,97,211,.75);font-weight:600}
@@ -1831,6 +1848,10 @@ body,.rsvp-text strong,.rsvp-deadline-chip strong{font-variant-numeric:lining-nu
         </div>
 
         <div id="rsvp-bandeja">
+          <div id="rsvpParaNote" class="rsvp-para" style="display:none">
+            <span class="rsvp-para-lbl" data-en="This invitation is for">Esta invitación es para</span>
+            <span class="rsvp-para-nombre" id="rsvpParaNombre"></span>
+          </div>
           <p class="rsvp-note" id="rsvp-pases-note"></p>
           <div class="rsvp-pases-display" id="rsvp-pases-display">
             <span class="rsvp-pases-label" data-en="Seats<br>reserved">Lugares<br>reservados</span>
@@ -2506,9 +2527,11 @@ function initMain(){
       if(noteEl){
         var esc = String(urlPara).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         var num = '<strong class="rsvp-note-num">' + pasesAsignados + '</strong>';
-        noteEl.innerHTML = T(esc + ', tienes ' + num + (pasesAsignados===1 ? ' pase reservado' : ' pases reservados') + ' para mi celebración.',
-                             esc + ', you have ' + num + (pasesAsignados===1 ? ' seat reserved' : ' seats reserved') + ' for my celebration.');
+        noteEl.innerHTML = T('Tienes ' + num + (pasesAsignados===1 ? ' pase reservado' : ' pases reservados') + ' para mi celebración.',
+                             'You have ' + num + (pasesAsignados===1 ? ' seat reserved' : ' seats reserved') + ' for my celebration.');
         noteEl.style.display = 'block';
+        var paraEl = document.getElementById('rsvpParaNote'), nomEl = document.getElementById('rsvpParaNombre');
+        if(paraEl && nomEl){ nomEl.textContent = urlPara; paraEl.style.display = 'block'; }
       }
     }
   }
@@ -2615,7 +2638,16 @@ function initMain(){
       .then(function(r){ return r.json(); })
       .then(function(resp){
         var d = resp && resp.invitado;
-        if(d && typeof d.pases==='number' && d.pases>0 && d.pases<=20){ pasesAsignados = d.pases; }
+        /* Si el panel no la tiene no se deja confirmar (crearía una invitación suelta) */
+        if(!d){
+          paintHeader();
+          btnYes.disabled = true; btnNo.disabled = true; btnConf.disabled = true;
+          setFeedback(T('No encontramos tu invitación. Pide a la familia que te envíe tu enlace de nuevo.',
+                        'We could not find your invitation. Please ask the family to send you your link again.'), '#FF9B9B');
+          applyFreeze();
+          return;
+        }
+        if(typeof d.pases==='number' && d.pases>0 && d.pases<=20){ pasesAsignados = d.pases; }
         if(pasesAUsar > pasesAsignados) pasesAUsar = pasesAsignados;
         if(d && d.bloqueado) bloqueado = true;
         paintHeader();
@@ -2662,6 +2694,19 @@ function initMain(){
       var inputs = fieldsEl.querySelectorAll('.rsvp-input');
       for(var i=0;i<inputs.length;i++){ var v=inputs[i].value.trim(); if(v) nombres.push(v); }
       if(nombres.length===0){ setFeedback(T('Por favor escribe al menos un nombre.','Please write at least one name.'),'#FF9B9B'); return; }
+      /* Un nombre por campo: "Ana y Luis" en un campo descuadra el panel */
+      var doble = null;
+      for(var d2=0; d2<inputs.length; d2++){
+        var malo = /[&\/+,]|\s(y|and)\s/i.test(inputs[d2].value.trim());
+        inputs[d2].classList.toggle('rsvp-input-falta', malo);
+        if(malo && !doble) doble = inputs[d2];
+      }
+      if(doble){
+        setFeedback(T('Escribe un solo nombre en cada campo. Si asisten más personas, sube el contador y escribe cada nombre en su propio campo.',
+                      'Write only one name per field. If more people are coming, raise the counter and write each name in its own field.'),'#FF9B9B');
+        doble.focus();
+        return;
+      }
       if(nombres.length < pasesAUsar){
         var faltan = pasesAUsar - nombres.length, primero = null;
         /* Se marcan los campos vacíos para que se note cuál falta */
